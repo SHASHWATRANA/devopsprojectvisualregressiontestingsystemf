@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visual Regression Testing Dashboard — capture, compare, and track web page screenshots automatically.">
+    <title>Visual Regression Testing Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ───────────────── Header ───────────────── -->
+<header class="header">
+    <div class="header__inner">
+        <h1 class="header__title">🔍 Visual Regression Tester</h1>
+        <p class="header__subtitle">Automated screenshot comparison for web quality assurance</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- ───────────── Run Test Card ───────────── -->
+    <section class="card card--primary" id="run-test-card">
+        <h2 class="card__title">Run a Visual Test</h2>
+        <form action="/run-test" method="POST" class="test-form" id="test-form">
+            <div class="test-form__group">
+                <label for="url-input" class="test-form__label">Website URL</label>
+                <input
+                    type="url"
+                    id="url-input"
+                    name="url"
+                    class="test-form__input"
+                    placeholder="https://example.com"
+                    required
+                >
+            </div>
+            <button type="submit" id="run-test-btn" class="btn btn--accent">
+                <span class="btn__icon">▶</span> Run Test
+            </button>
+        </form>
+        <!-- Loading overlay (shown via JS when form submits) -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="spinner"></div>
+            <p>Capturing &amp; comparing screenshots…</p>
+        </div>
+    </section>
+
+    <!-- ──────────── Statistics Card ──────────── -->
+    <section class="card" id="stats-card">
+        <h2 class="card__title">Test Statistics</h2>
+        <div class="stats-row">
+            <div class="stat-box stat-box--total">
+                <span class="stat-box__value" id="stat-total">{{ stats.total }}</span>
+                <span class="stat-box__label">Total</span>
+            </div>
+            <div class="stat-box stat-box--pass">
+                <span class="stat-box__value" id="stat-passed">{{ stats.passed }}</span>
+                <span class="stat-box__label">Passed</span>
+            </div>
+            <div class="stat-box stat-box--fail">
+                <span class="stat-box__value" id="stat-failed">{{ stats.failed }}</span>
+                <span class="stat-box__label">Failed</span>
+            </div>
+        </div>
+        <div class="chart-wrapper">
+            <canvas id="results-chart" aria-label="Pass / Fail chart" role="img"></canvas>
+        </div>
+    </section>
+
+    <!-- ──────────── Recent Results Table ──────────── -->
+    <section class="card" id="history-card">
+        <h2 class="card__title">Test History</h2>
+        {% if results %}
+        <div class="table-wrapper">
+            <table class="results-table" id="results-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Diff&nbsp;%</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in results | reverse %}
+                    <tr class="{{ 'row--pass' if r.passed else 'row--fail' }}">
+                        <td>{{ loop.revindex }}</td>
+                        <td class="truncate" title="{{ r.url }}">{{ r.url }}</td>
+                        <td><span class="badge {{ 'badge--pass' if r.passed else 'badge--fail' }}">{{ r.status }}</span></td>
+                        <td>{{ r.diff_percent }}%</td>
+                        <td>{{ r.timestamp[:19] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="empty-state">No tests have been run yet. Enter a URL above to get started.</p>
+        {% endif %}
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 Visual Regression Testing System</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

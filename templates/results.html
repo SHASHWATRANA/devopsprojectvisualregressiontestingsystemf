@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visual Regression Test Results — view baseline, current, and diff screenshots.">
+    <title>Test Results — Visual Regression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ───────────────── Header ───────────────── -->
+<header class="header">
+    <div class="header__inner">
+        <a href="/" class="header__back">← Dashboard</a>
+        <h1 class="header__title">📊 Test Results</h1>
+    </div>
+</header>
+
+<main class="container">
+
+    {% if latest %}
+    <!-- ──────── Result Summary ──────── -->
+    <section class="card card--{{ 'pass' if latest.passed else 'fail' }}" id="result-summary-card">
+        <h2 class="card__title">
+            Latest Result:
+            <span class="badge badge--lg {{ 'badge--pass' if latest.passed else 'badge--fail' }}">
+                {{ latest.status }}
+            </span>
+        </h2>
+        <ul class="result-meta">
+            <li><strong>URL:</strong> <a href="{{ latest.url }}" target="_blank" rel="noopener">{{ latest.url }}</a></li>
+            <li><strong>Diff Percentage:</strong> {{ latest.diff_percent }}%</li>
+            <li><strong>Time:</strong> {{ latest.timestamp[:19] }}</li>
+        </ul>
+    </section>
+
+    <!-- ──────── Screenshot Comparison ──────── -->
+    <section class="card" id="screenshots-card">
+        <h2 class="card__title">Screenshot Comparison</h2>
+        <div class="screenshot-grid">
+            <!-- Baseline -->
+            <div class="screenshot-panel">
+                <h3>Baseline</h3>
+                {% if latest.baseline_path %}
+                    {% set bname = latest.baseline_path.replace('\\', '/').split('/')[-1] %}
+                    <img src="/screenshots/baseline/{{ bname }}" alt="Baseline screenshot" class="screenshot-img" id="img-baseline">
+                {% else %}
+                    <p class="empty-state">No baseline image</p>
+                {% endif %}
+            </div>
+            <!-- Current -->
+            <div class="screenshot-panel">
+                <h3>Current</h3>
+                {% if latest.current_path %}
+                    {% set cname = latest.current_path.replace('\\', '/').split('/')[-1] %}
+                    <img src="/screenshots/current/{{ cname }}" alt="Current screenshot" class="screenshot-img" id="img-current">
+                {% else %}
+                    <p class="empty-state">No current image</p>
+                {% endif %}
+            </div>
+            <!-- Diff -->
+            <div class="screenshot-panel">
+                <h3>Diff</h3>
+                {% if latest.diff_image_path %}
+                    {% set dname = latest.diff_image_path.replace('\\', '/').split('/')[-1] %}
+                    <img src="/screenshots/diff/{{ dname }}" alt="Diff image" class="screenshot-img" id="img-diff">
+                {% else %}
+                    <p class="empty-state">No diff image (first run / identical)</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    {% else %}
+    <section class="card">
+        <p class="empty-state">No test results yet. <a href="/">Go back</a> and run a test.</p>
+    </section>
+    {% endif %}
+
+    <!-- ──────── Chart ──────── -->
+    <section class="card" id="chart-card">
+        <h2 class="card__title">Aggregate Pass / Fail</h2>
+        <div class="chart-wrapper">
+            <canvas id="results-chart" aria-label="Pass / Fail chart" role="img"></canvas>
+        </div>
+    </section>
+
+    <!-- ──────────── Full History ──────────── -->
+    <section class="card" id="full-history-card">
+        <h2 class="card__title">Full History</h2>
+        {% if results %}
+        <div class="table-wrapper">
+            <table class="results-table" id="results-table-full">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Diff %</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in results | reverse %}
+                    <tr class="{{ 'row--pass' if r.passed else 'row--fail' }}">
+                        <td>{{ loop.revindex }}</td>
+                        <td class="truncate" title="{{ r.url }}">{{ r.url }}</td>
+                        <td><span class="badge {{ 'badge--pass' if r.passed else 'badge--fail' }}">{{ r.status }}</span></td>
+                        <td>{{ r.diff_percent }}%</td>
+                        <td>{{ r.timestamp[:19] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="empty-state">No history.</p>
+        {% endif %}
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 Visual Regression Testing System</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

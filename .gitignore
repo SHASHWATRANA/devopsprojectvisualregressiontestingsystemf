@@ -1,0 +1,27 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+
+# Screenshots (generated at runtime)
+screenshots/baseline/*
+screenshots/current/*
+screenshots/diff/*
+!screenshots/baseline/.gitkeep
+!screenshots/current/.gitkeep
+!screenshots/diff/.gitkeep
+
+# Test results (generated at runtime)
+test_results.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
