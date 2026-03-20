@@ -112,6 +112,8 @@ The project includes a `render.yaml` blueprint that enables **one-click deployme
    https://vrts-dashboard.onrender.com
    ```
 
+> **✅ This project is already deployed at: [https://vrts-dashboard.onrender.com](https://vrts-dashboard.onrender.com)**
+
 ### `render.yaml` Reference
 
 ```yaml

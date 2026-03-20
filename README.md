@@ -1,11 +1,27 @@
 # Visual Regression Testing System
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-vrts--dashboard.onrender.com-brightgreen?style=for-the-badge&logo=render)](https://vrts-dashboard.onrender.com)
+[![CI](https://github.com/SHASHWATRANA/devopsprojectvisualregressiontestingsystemf/actions/workflows/ci.yml/badge.svg)](https://github.com/SHASHWATRANA/devopsprojectvisualregressiontestingsystemf/actions/workflows/ci.yml)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=flat-square&logo=docker)](https://hub.docker.com)
+[![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
 > **Student Name:** Shashwat Rana  
 > **Registration No:** 23fe10cse00101  
 > **Course:** CSE3253 DevOps [PE6]  
 > **Semester:** VI (2025–2026)  
 > **Project Type:** Docker & CI/CD — Containerised Deployment with GitHub Actions  
 > **Difficulty:** Intermediate
+
+---
+
+## 🚀 Live Deployment
+
+> **🌐 [https://vrts-dashboard.onrender.com](https://vrts-dashboard.onrender.com)**
+
+The application is deployed on **Render.com** using Docker. Click the link above to open the live dashboard.
+
+> ⚠️ *Free tier: may take ~50 s to wake from idle. Refresh if the page is slow on first load.*
 
 ---
 
