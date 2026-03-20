@@ -59,4 +59,4 @@ RUN mkdir -p screenshots/baseline screenshots/current screenshots/diff
 EXPOSE 5000
 
 # ── Default command: start the Flask dashboard ───────────────
-CMD ["python", "app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "app:app"]
