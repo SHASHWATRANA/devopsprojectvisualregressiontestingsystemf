@@ -7,7 +7,7 @@ services:
   - type: web
     name: vrts-dashboard
     runtime: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./infrastructure/docker/Dockerfile
     plan: free
     envVars:
       - key: PYTHONUNBUFFERED

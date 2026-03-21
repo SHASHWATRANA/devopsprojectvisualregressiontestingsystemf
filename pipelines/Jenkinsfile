@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = "vrts"
+        DOCKER_IMAGE = "${APP_NAME}:latest"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install -r src/main/config/requirements.txt
+                '''
+            }
+        }
+
+        stage('Smoke Test') {
+            steps {
+                sh '''
+                    . venv/bin/activate
+                    python src/main/cli.py --url https://example.com
+                '''
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t $DOCKER_IMAGE -f infrastructure/docker/Dockerfile .'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'src/main/screenshots/**/*', allowEmptyArchive: true
+            cleanWs()
+        }
+    }
+}

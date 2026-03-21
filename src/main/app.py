@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
 """
-app.py — Flask Web Dashboard for Visual Regression Testing
+app.py -- Flask Web Dashboard for Visual Regression Testing
 
 Routes:
-  GET  /                → Dashboard homepage (URL input, chart, history)
-  POST /run-test        → Kick off a visual regression test
-  GET  /results         → Show detailed results for the latest test
-  GET  /api/stats       → JSON endpoint consumed by Chart.js
-  GET  /api/results     → JSON list of all test results
-  GET  /screenshots/<path> → Serve saved screenshot images
+  GET  /                    Dashboard homepage (URL input, chart, history)
+  POST /run-test            Kick off a visual regression test
+  GET  /results             Show detailed results for the latest test
+  GET  /api/stats           JSON endpoint consumed by Chart.js
+  GET  /api/results         JSON list of all test results
+  GET  /screenshots/<path>  Serve saved screenshot images
 """
 
 import os
+import sys
+
+# Ensure the engine package resolves correctly regardless of CWD
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import shutil
 
 from flask import (
@@ -41,7 +46,7 @@ DIFF_DIR = "screenshots/diff"
 
 
 # ---------------------------------------------------------------------------
-# Routes — Pages
+# Routes -- Pages
 # ---------------------------------------------------------------------------
 
 @app.route("/")
@@ -68,7 +73,7 @@ def run_test():
     if not os.path.exists(baseline_path):
         os.makedirs(BASELINE_DIR, exist_ok=True)
         shutil.copy2(current_path, baseline_path)
-        # First run — automatic PASS
+        # First run -- automatic PASS
         add_result(
             url=url,
             passed=True,
@@ -109,7 +114,7 @@ def results():
 
 
 # ---------------------------------------------------------------------------
-# Routes — API (JSON)
+# Routes -- API (JSON)
 # ---------------------------------------------------------------------------
 
 @app.route("/api/stats")
@@ -125,7 +130,7 @@ def api_results():
 
 
 # ---------------------------------------------------------------------------
-# Routes — Static screenshot files
+# Routes -- Static screenshot files
 # ---------------------------------------------------------------------------
 
 @app.route("/screenshots/<path:filepath>")

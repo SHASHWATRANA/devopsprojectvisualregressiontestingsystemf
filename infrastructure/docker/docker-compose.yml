@@ -1,0 +1,21 @@
+# ──────────────────────────────────────────────────────────────
+#  Docker Compose — Visual Regression Testing System
+#  Usage:
+#    docker compose up -d
+# ──────────────────────────────────────────────────────────────
+
+version: "3.9"
+
+services:
+  vrts:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ../../src/main/screenshots:/app/src/main/screenshots
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

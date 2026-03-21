@@ -107,57 +107,82 @@ docker run -p 5000:5000 vrts
 
 ```
 devops_vrts/
-├── app.py                       # Flask web dashboard & REST API
-├── cli.py                       # Command-line interface
-├── requirements.txt             # Python dependencies
-├── Dockerfile                   # Container configuration (Python + Chrome)
-├── render.yaml                  # Render.com cloud deployment blueprint
-├── .github/
-│   └── workflows/
-│       └── ci.yml               # GitHub Actions CI pipeline
-├── engine/
-│   ├── __init__.py
-│   ├── selenium_runner.py       # Headless Chrome screenshot capture
-│   ├── image_compare.py         # OpenCV image comparison engine
-│   └── result_manager.py        # Test result tracking & statistics
-├── templates/
-│   ├── index.html               # Dashboard homepage
-│   └── results.html             # Test results page
-├── static/
-│   ├── css/styles.css           # Dashboard stylesheet
-│   └── js/dashboard.js          # Chart.js integration
-├── screenshots/
-│   ├── baseline/                # Reference screenshots
-│   ├── current/                 # Latest test screenshots
-│   └── diff/                    # Highlighted difference images
-└── docs/
-    ├── userguide.md             # User Guide
-    ├── apidocumentation.md      # API Documentation
-    ├── designdocument.md        # Design Document
-    ├── deployment.md            # Deployment Guide
-    ├── troubleshooting.md       # Troubleshooting Guide
-    └── architecture/
-        └── architecture_diagrams.md  # System Architecture Diagrams
+│
+├── README.md                           # Main project documentation
+├── .gitignore                          # Git ignore file
+├── LICENSE                             # MIT License
+│
+├── src/                                # Source code
+│   ├── main/
+│   │   ├── app.py                      # Flask web dashboard & REST API
+│   │   ├── cli.py                      # Command-line interface
+│   │   ├── config/                     
+│   │   │   ├── requirements.txt        # Python dependencies
+│   │   │   └── render.yaml             # Render.com cloud deployment blueprint
+│   │   ├── engine/                     # Core testing engine
+│   │   │   ├── selenium_runner.py      
+│   │   │   ├── image_compare.py        
+│   │   │   └── result_manager.py       
+│   │   ├── static/                     # CSS & JS assets
+│   │   ├── templates/                  # HTML dashboard templates
+│   │   └── screenshots/                # Generated screenshots (baseline/current/diff)
+│   ├── test/                           
+│   └── scripts/                        
+│
+├── infrastructure/                     # Infrastructure as Code
+│   └── docker/                         
+│       ├── Dockerfile                  # Container configuration (Python 3.12 + Chrome)
+│       └── docker-compose.yml          
+│
+├── pipelines/                          # CI/CD Pipeline definitions
+│   ├── Jenkinsfile                     # Jenkins declarative pipeline
+│   └── .github/workflows/              
+│       └── ci.yml                      # GitHub Actions automated workflow
+│
+├── tests/                              # Test suites
+│   ├── unit/                           
+│   ├── integration/                    
+│   ├── selenium/                       
+│   └── testdata/                       
+│
+├── docs/                               # Documentation
+│   ├── projectplan.md                  # Project plan and timeline
+│   ├── designdocument.md               # Technical design document
+│   ├── userguide.md                    # User guide
+│   ├── apidocumentation.md             # API documentation
+│   └── screenshots/                    
+│
+├── presentations/                      # Presentation materials
+│   └── demo-script.md                  # Demo presentation script
+│
+└── deliverables/                       # Final deliverables
+    ├── final-report.md                 # Technical project report
+    ├── deployment-guide.md             # Cloud & Docker deployment instructions
+    ├── troubleshooting-guide.md        # Debugging and FAQ guide
+    └── assessment/                     
 ```
 
 ---
 
 ## 📚 Documentation
 
-### User Documentation
+### Core Documentation
 
 - [User Guide](docs/userguide.md)
 - [API Documentation](docs/apidocumentation.md)
-
-### Technical Documentation
-
 - [Design Document](docs/designdocument.md)
-- [Architecture Diagrams](docs/architecture/)
+- [Project Plan](docs/projectplan.md)
 
-### DevOps Documentation
+### Deployment & Operations
 
-- [Deployment Guide](docs/deployment.md)
-- [Troubleshooting Guide](docs/troubleshooting.md)
+- [Deployment Guide](deliverables/deployment-guide.md)
+- [Troubleshooting Guide](deliverables/troubleshooting-guide.md)
+
+### Presentations & Reports
+
+- [Demo Script](presentations/demo-script.md)
+- [Final Project Report](deliverables/final-report.md)
+
 
 ---
 

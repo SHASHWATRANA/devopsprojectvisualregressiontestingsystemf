@@ -1,8 +1,8 @@
 # ──────────────────────────────────────────────────────────────
-#  GitHub Actions — CI Pipeline
+#  GitHub Actions -- CI Pipeline
 #  Visual Regression Testing System
 #
-#  Triggers on push / PR to main.
+#  Triggers on push / PR to main / master.
 #  Steps:
 #    1. Checkout code
 #    2. Set up Python 3.12
@@ -11,13 +11,13 @@
 #    5. Run a CLI smoke test against https://example.com
 # ──────────────────────────────────────────────────────────────
 
-name: CI — Visual Regression Tests
+name: CI -- Visual Regression Tests
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 jobs:
@@ -45,11 +45,11 @@ jobs:
 
       # ── Dependencies ───────────────────────────────────────
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r src/main/config/requirements.txt
 
       # ── CLI Smoke Test ─────────────────────────────────────
       - name: Run CLI visual regression test
-        run: python cli.py --url https://example.com
+        run: python src/main/cli.py --url https://example.com
 
       # ── Upload Screenshots (optional artifact) ─────────────
       - name: Upload screenshots
@@ -57,5 +57,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: screenshots/
+          path: src/main/screenshots/
           retention-days: 7

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cli.py — Command-Line Interface for Visual Regression Testing
+cli.py -- Command-Line Interface for Visual Regression Testing
 
 Usage:
     python cli.py --url https://example.com
@@ -13,10 +13,14 @@ The CLI will:
   4. If no baseline exists, the first capture becomes the baseline
 """
 
-import argparse
 import os
-import shutil
 import sys
+
+# Ensure the engine package resolves correctly regardless of CWD
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import argparse
+import shutil
 
 from engine.selenium_runner import capture_screenshot
 from engine.image_compare import compare_images
@@ -47,22 +51,22 @@ def run_test(url: str, threshold: float = 0.5) -> dict:
     print(f"  Running visual test for {url}")
     print(f"{'='*60}\n")
 
-    # Step 1 — Capture current screenshot
-    print("[1/4] Capturing screenshot …")
+    # Step 1 -- Capture current screenshot
+    print("[1/4] Capturing screenshot ...")
     current_path = capture_screenshot(url, output_dir=CURRENT_DIR)
     filename = os.path.basename(current_path)
     print(f"       Screenshot saved: {current_path}\n")
 
-    # Step 2 — Check for an existing baseline
+    # Step 2 -- Check for an existing baseline
     baseline_path = os.path.join(BASELINE_DIR, filename)
     baseline_exists = os.path.exists(baseline_path)
     print(f"[2/4] Baseline exists: {'YES' if baseline_exists else 'NO'}")
 
     if not baseline_exists:
-        # First run — promote current screenshot to baseline
+        # First run -- promote current screenshot to baseline
         os.makedirs(BASELINE_DIR, exist_ok=True)
         shutil.copy2(current_path, baseline_path)
-        print(f"       → Created new baseline: {baseline_path}\n")
+        print(f"       Created new baseline: {baseline_path}\n")
 
         result = add_result(
             url=url,
@@ -73,15 +77,15 @@ def run_test(url: str, threshold: float = 0.5) -> dict:
             diff_image_path="",
         )
 
-        print("[3/4] Comparing screenshots … SKIPPED (new baseline)")
+        print("[3/4] Comparing screenshots ... SKIPPED (new baseline)")
         print("[4/4] No diff image generated.\n")
         print(f"  Difference detected: NO")
         print(f"  TEST RESULT: PASS  (baseline created)\n")
         return result
 
-    # Step 3 — Compare screenshots
+    # Step 3 -- Compare screenshots
     print(f"       Baseline path: {baseline_path}\n")
-    print("[3/4] Comparing screenshots …")
+    print("[3/4] Comparing screenshots ...")
 
     comparison = compare_images(
         baseline_path=baseline_path,
@@ -94,7 +98,7 @@ def run_test(url: str, threshold: float = 0.5) -> dict:
     print(f"       Changed pixels: {comparison['changed_pixels']} / {comparison['total_pixels']}")
     print(f"       Diff percent:   {comparison['diff_percent']}%\n")
 
-    # Step 4 — Show result
+    # Step 4 -- Show result
     print(f"[4/4] Diff image: {comparison['diff_image_path']}\n")
     print(f"  Difference detected: {'YES' if diff_detected else 'NO'}")
     print(f"  TEST RESULT: {comparison['message']}\n")
@@ -118,7 +122,7 @@ def run_test(url: str, threshold: float = 0.5) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Visual Regression Testing — CLI",
+        description="Visual Regression Testing -- CLI",
     )
     parser.add_argument(
         "--url",

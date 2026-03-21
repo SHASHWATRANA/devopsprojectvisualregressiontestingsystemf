@@ -1,12 +1,15 @@
 # ──────────────────────────────────────────────────────────────
 #  Dockerfile — Visual Regression Testing System
+#  Location: infrastructure/docker/Dockerfile
+#  Build from project root:
+#    docker build -f infrastructure/docker/Dockerfile .
 #
 #  Builds a container with:
-#    • Python 3.12
-#    • Google Chrome (headless)
-#    • ChromeDriver (matching version)
-#    • Project Python dependencies
-#    • Flask served on port 5000
+#    . Python 3.12
+#    . Google Chrome (headless)
+#    . ChromeDriver (matching version, via webdriver-manager)
+#    . Project Python dependencies
+#    . Flask / Gunicorn served on port 5000
 # ──────────────────────────────────────────────────────────────
 
 FROM python:3.12-slim
@@ -42,21 +45,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get update && apt-get install -y --no-install-recommends google-chrome-stable \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# ── Working directory ────────────────────────────────────────
+# ── Copy & install Python dependencies ─────────────────────
 WORKDIR /app
+COPY src/main/config/requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-# ── Python dependencies ─────────────────────────────────────
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# ── Copy project files ──────────────────────────────────────
+# ── Copy full project ───────────────────────────────────────
 COPY . .
 
 # ── Create screenshot directories ───────────────────────────
-RUN mkdir -p screenshots/baseline screenshots/current screenshots/diff
+RUN mkdir -p src/main/screenshots/baseline src/main/screenshots/current src/main/screenshots/diff
+
+# ── Set working directory to the Flask app ──────────────────
+WORKDIR /app/src/main
 
 # ── Expose Flask port ────────────────────────────────────────
 EXPOSE 5000
 
-# ── Default command: start the Flask dashboard ───────────────
+# ── Start Gunicorn ───────────────────────────────────────────
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "app:app"]
