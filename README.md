@@ -150,10 +150,12 @@ devops_vrts/
 │   ├── designdocument.md               # Technical design document
 │   ├── userguide.md                    # User guide
 │   ├── apidocumentation.md             # API documentation
+│   ├── architecture/                   # Architecture diagrams
+│   │   └── ARCHITECTURE.jpg            # System architecture diagram
 │   └── screenshots/                    
 │
 ├── presentations/                      # Presentation materials
-│   └── demo-script.md                  # Demo presentation script
+│   └── Visual-Regression-Testing-System-VRTS.pptx.pptx  # Project presentation
 │
 └── deliverables/                       # Final deliverables
     ├── final-report.md                 # Technical project report
@@ -178,9 +180,13 @@ devops_vrts/
 - [Deployment Guide](deliverables/deployment-guide.md)
 - [Troubleshooting Guide](deliverables/troubleshooting-guide.md)
 
+### Architecture
+
+- [Architecture Diagram](docs/architecture/ARCHITECTURE.jpg)
+
 ### Presentations & Reports
 
-- [Demo Script](presentations/demo-script.md)
+- [Project Presentation (PPTX)](presentations/Visual-Regression-Testing-System-VRTS.pptx.pptx)
 - [Final Project Report](deliverables/final-report.md)
 
 

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-04-09T08:20:00.000Z" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="vrts-architecture" name="VRTS Architecture">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========== TITLE ========== -->
+        <mxCell id="title" value="&lt;b&gt;Visual Regression Testing System (VRTS) — Architecture Diagram&lt;/b&gt;" style="text;html=1;fontSize=20;fontFamily=Inter;align=center;verticalAlign=middle;whiteSpace=wrap;fontColor=#1a1a2e;" vertex="1" parent="1">
+          <mxGeometry x="250" y="15" width="900" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ========== USER / ACTOR ========== -->
+        <mxCell id="user" value="&lt;b&gt;User / Developer&lt;/b&gt;" style="shape=mxgraph.azure.user;fillColor=#0078D4;fontColor=#ffffff;strokeColor=none;fontSize=12;fontFamily=Inter;verticalLabelPosition=bottom;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="655" y="65" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ========== PRESENTATION LAYER ========== -->
+        <mxCell id="pres_layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=8;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="150" width="960" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pres_label" value="&lt;b&gt;PRESENTATION LAYER&lt;/b&gt;" style="text;html=1;fontSize=13;fontFamily=Inter;fontColor=#1a5276;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="215" y="155" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Web Dashboard -->
+        <mxCell id="web_dash" value="&lt;b&gt;Web Dashboard&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Flask 3.1 / HTML / Chart.js&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Routes: /, /run-test, /results&lt;br&gt;/api/stats, /api/results&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#3498db;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="270" y="178" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="web_icon" value="🖥️" style="text;html=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="240" y="195" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- CLI Interface -->
+        <mxCell id="cli" value="&lt;b&gt;CLI Interface&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;cli.py&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;python cli.py --url &amp;lt;URL&amp;gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#3498db;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="178" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cli_icon" value="⌨️" style="text;html=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="590" y="195" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- REST API -->
+        <mxCell id="rest_api" value="&lt;b&gt;REST API&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;JSON endpoints&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#3498db;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="930" y="185" width="180" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- ========== ENGINE LAYER ========== -->
+        <mxCell id="engine_layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5e3;strokeColor=#27ae60;strokeWidth=2;arcSize=8;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="310" width="960" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="engine_label" value="&lt;b&gt;ENGINE LAYER&lt;/b&gt;  &lt;font style=&quot;font-size:10px&quot;&gt;(src/main/engine/)&lt;/font&gt;" style="text;html=1;fontSize=13;fontFamily=Inter;fontColor=#1e8449;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="215" y="315" width="250" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Selenium Runner -->
+        <mxCell id="selenium" value="&lt;b&gt;Selenium Runner&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;selenium_runner.py&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Headless Chrome&lt;br&gt;1920×1080 capture&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#27ae60;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="240" y="345" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="sel_icon" value="📸" style="text;html=1;fontSize=18;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="210" y="362" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Image Comparator -->
+        <mxCell id="comparator" value="&lt;b&gt;Image Comparator&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;image_compare.py&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;OpenCV pixel diff&lt;br&gt;Threshold: 0.5%&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#27ae60;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="530" y="345" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_icon" value="🔍" style="text;html=1;fontSize=18;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="362" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Result Manager -->
+        <mxCell id="result_mgr" value="&lt;b&gt;Result Manager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;result_manager.py&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;In-memory + JSON&lt;br&gt;persistence&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#27ae60;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="830" y="345" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="res_icon" value="📊" style="text;html=1;fontSize=18;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="800" y="362" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ========== STORAGE LAYER ========== -->
+        <mxCell id="storage_layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fdebd0;strokeColor=#e67e22;strokeWidth=2;arcSize=8;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="490" width="960" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="storage_label" value="&lt;b&gt;STORAGE LAYER&lt;/b&gt;  &lt;font style=&quot;font-size:10px&quot;&gt;(File System)&lt;/font&gt;" style="text;html=1;fontSize=13;fontFamily=Inter;fontColor=#a04000;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="215" y="495" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Baseline Screenshots -->
+        <mxCell id="baseline" value="&lt;b&gt;Baseline&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;screenshots/baseline/&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Reference images&lt;/font&gt;" style="shape=mxgraph.flowchart.document2;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#e67e22;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="520" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Current Screenshots -->
+        <mxCell id="current" value="&lt;b&gt;Current&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;screenshots/current/&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Latest captures&lt;/font&gt;" style="shape=mxgraph.flowchart.document2;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#e67e22;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="520" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Diff Screenshots -->
+        <mxCell id="diff" value="&lt;b&gt;Diff Images&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;screenshots/diff/&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Red-highlighted diffs&lt;/font&gt;" style="shape=mxgraph.flowchart.document2;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#e67e22;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="520" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Results JSON -->
+        <mxCell id="results_json" value="&lt;b&gt;Results&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;test_results.json&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Test history&lt;/font&gt;" style="shape=mxgraph.flowchart.document2;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#e67e22;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="520" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ========== CI/CD PIPELINE (right side) ========== -->
+        <mxCell id="cicd_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8daef;strokeColor=#8e44ad;strokeWidth=2;arcSize=8;shadow=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="150" width="140" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd_label" value="&lt;b&gt;CI/CD&lt;br&gt;PIPELINE&lt;/b&gt;" style="text;html=1;fontSize=12;fontFamily=Inter;fontColor=#6c3483;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="155" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- GitHub Actions -->
+        <mxCell id="gh_actions" value="&lt;b&gt;GitHub&lt;br&gt;Actions&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;ci.yml&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8e44ad;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="195" width="110" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Jenkins -->
+        <mxCell id="jenkins" value="&lt;b&gt;Jenkins&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Jenkinsfile&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8e44ad;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="280" width="110" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Docker -->
+        <mxCell id="docker" value="&lt;b&gt;Docker&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Dockerfile&lt;br&gt;docker-compose.yml&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#555&quot;&gt;Python 3.12&lt;br&gt;+ Chrome + Gunicorn&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8e44ad;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="120" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- Render.com -->
+        <mxCell id="render" value="&lt;b&gt;Render.com&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;render.yaml&lt;br&gt;Cloud Deploy&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8e44ad;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="480" width="110" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ========== TESTING SUITE (bottom) ========== -->
+        <mxCell id="test_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fadbd8;strokeColor=#e74c3c;strokeWidth=2;arcSize=8;shadow=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="650" width="960" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="test_label" value="&lt;b&gt;TESTING&lt;/b&gt;" style="text;html=1;fontSize=12;fontFamily=Inter;fontColor=#922b21;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="215" y="654" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="unit_tests" value="&lt;b&gt;Unit Tests&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;tests/unit/&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e74c3c;strokeWidth=1.5;fontSize=10;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="240" y="675" width="150" height="42" as="geometry" />
+        </mxCell>
+
+        <mxCell id="integ_tests" value="&lt;b&gt;Integration Tests&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;tests/integration/&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e74c3c;strokeWidth=1.5;fontSize=10;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="675" width="170" height="42" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sel_tests" value="&lt;b&gt;Selenium Tests&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;tests/selenium/&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e74c3c;strokeWidth=1.5;fontSize=10;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="675" width="160" height="42" as="geometry" />
+        </mxCell>
+
+        <mxCell id="test_data" value="&lt;b&gt;Test Data&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;tests/testdata/&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e74c3c;strokeWidth=1.5;fontSize=10;fontFamily=Inter;shadow=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="840" y="675" width="150" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- ========== EXTERNAL: Target Website ========== -->
+        <mxCell id="target_web" value="&lt;b&gt;Target Website&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;(External URL under test)&lt;/font&gt;" style="shape=mxgraph.flowchart.terminate;whiteSpace=wrap;html=1;fillColor=#f5b7b1;strokeColor=#e74c3c;strokeWidth=2;fontSize=11;fontFamily=Inter;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="765" width="210" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ===== TECHNOLOGY BADGES (bottom right) ===== -->
+        <mxCell id="tech_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#bbb;strokeWidth=1;arcSize=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="755" width="460" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_title" value="&lt;b&gt;Tech Stack&lt;/b&gt;" style="text;html=1;fontSize=10;fontFamily=Inter;fontColor=#555;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="710" y="757" width="80" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="tech1" value="Python 3.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3776AB;strokeColor=none;fontSize=9;fontFamily=Inter;fontColor=#fff;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="710" y="778" width="72" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="tech2" value="Flask 3.1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000;strokeColor=none;fontSize=9;fontFamily=Inter;fontColor=#fff;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="788" y="778" width="62" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="tech3" value="Selenium 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#43B02A;strokeColor=none;fontSize=9;fontFamily=Inter;fontColor=#fff;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="856" y="778" width="72" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="tech4" value="OpenCV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C3EE8;strokeColor=none;fontSize=9;fontFamily=Inter;fontColor=#fff;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="934" y="778" width="55" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="tech5" value="Docker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2496ED;strokeColor=none;fontSize=9;fontFamily=Inter;fontColor=#fff;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="995" y="778" width="55" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="tech6" value="Gunicorn" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#499848;strokeColor=none;fontSize=9;fontFamily=Inter;fontColor=#fff;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1056" y="778" width="60" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="tech7" value="Chart.js" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6384;strokeColor=none;fontSize=9;fontFamily=Inter;fontColor=#fff;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1122" y="778" width="55" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- ========== ARROWS ========== -->
+        <!-- User to Web Dashboard -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3498db;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=9;fontFamily=Inter;" edge="1" source="user" target="web_dash" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_label" value="Browser" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#3498db;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- User to CLI -->
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3498db;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=9;fontFamily=Inter;" edge="1" source="user" target="cli" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_label" value="Terminal" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#3498db;" vertex="1" connectable="0" parent="e2">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Web Dashboard to Selenium -->
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#27ae60;strokeWidth=2;endArrow=blockThin;endFill=1;" edge="1" source="web_dash" target="selenium" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CLI to Selenium -->
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#27ae60;strokeWidth=2;endArrow=blockThin;endFill=1;" edge="1" source="cli" target="selenium" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Selenium to Comparator -->
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#27ae60;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=9;fontFamily=Inter;" edge="1" source="selenium" target="comparator" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_label" value="PNG" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#27ae60;" vertex="1" connectable="0" parent="e5">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Comparator to Result Manager -->
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#27ae60;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=9;fontFamily=Inter;" edge="1" source="comparator" target="result_mgr" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6_label" value="PASS/FAIL" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#27ae60;" vertex="1" connectable="0" parent="e6">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Selenium to Current screenshots -->
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#e67e22;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;" edge="1" source="selenium" target="current" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Selenium to Baseline -->
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#e67e22;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;" edge="1" source="selenium" target="baseline" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Comparator to Diff -->
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#e67e22;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;" edge="1" source="comparator" target="diff" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Result Manager to Results JSON -->
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#e67e22;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;" edge="1" source="result_mgr" target="results_json" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Selenium to Target Website -->
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#e74c3c;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=9;fontFamily=Inter;" edge="1" source="selenium" target="target_web" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="630" />
+              <mxPoint x="350" y="740" />
+              <mxPoint x="385" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11_label" value="HTTP / Screenshot" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#e74c3c;" vertex="1" connectable="0" parent="e11">
+          <mxGeometry x="0.3" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- CI/CD to Presentation Layer -->
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#8e44ad;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;fontSize=9;fontFamily=Inter;" edge="1" source="gh_actions" target="pres_layer" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12_label" value="triggers" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#8e44ad;" vertex="1" connectable="0" parent="e12">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Docker wraps all -->
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#8e44ad;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;fontSize=9;fontFamily=Inter;" edge="1" source="docker" target="engine_layer" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13_label" value="containerises" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#8e44ad;" vertex="1" connectable="0" parent="e13">
+          <mxGeometry x="-0.3" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Render deploys -->
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#8e44ad;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;fontSize=9;fontFamily=Inter;" edge="1" source="render" target="storage_layer" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14_label" value="deploys" style="edgeLabel;html=1;fontSize=9;fontFamily=Inter;fontColor=#8e44ad;" vertex="1" connectable="0" parent="e14">
+          <mxGeometry x="-0.3" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- REST API to Result Manager (data feed) -->
+        <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#27ae60;strokeWidth=1.5;endArrow=blockThin;endFill=1;" edge="1" source="rest_api" target="result_mgr" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- GH Actions to Jenkins -->
+        <mxCell id="e16" style="rounded=1;strokeColor=#8e44ad;strokeWidth=1;dashed=1;" edge="1" source="gh_actions" target="jenkins" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Jenkins to Docker -->
+        <mxCell id="e17" style="rounded=1;strokeColor=#8e44ad;strokeWidth=1;dashed=1;" edge="1" source="jenkins" target="docker" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Docker to Render -->
+        <mxCell id="e18" style="rounded=1;strokeColor=#8e44ad;strokeWidth=1;dashed=1;" edge="1" source="docker" target="render" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
