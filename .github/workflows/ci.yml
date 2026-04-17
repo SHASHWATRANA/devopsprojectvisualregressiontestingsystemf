@@ -19,6 +19,9 @@ on:
   pull_request:
     branches: [main, master]
   workflow_dispatch:
+  schedule:
+    # Runs automatically at 00:00 UTC every day
+    - cron: '0 0 * * *'
 
 jobs:
   test:

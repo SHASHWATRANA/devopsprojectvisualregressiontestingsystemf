@@ -6,6 +6,11 @@ pipeline {
         DOCKER_IMAGE = "${APP_NAME}:latest"
     }
 
+    triggers {
+        // Runs automatically at 00:00 every day
+        cron('0 0 * * *')
+    }
+
     stages {
         stage('Checkout') {
             steps {
