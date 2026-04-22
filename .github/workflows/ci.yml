@@ -6,7 +6,7 @@
 #  Steps:
 #    1. Checkout code
 #    2. Set up Python 3.12
-#    3. Install Chrome (headless)
+#    3. Verify Chrome (pre-installed on ubuntu-latest)
 #    4. Install Python dependencies
 #    5. Run a CLI smoke test against https://example.com
 # ──────────────────────────────────────────────────────────────
@@ -39,12 +39,10 @@ jobs:
           python-version: "3.12"
 
       # ── Chrome ─────────────────────────────────────────────
-      - name: Install Google Chrome
-        run: |
-          wget -qO - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
-          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+      # ubuntu-latest runners already ship with Google Chrome;
+      # no manual installation required.
+      - name: Verify Google Chrome installation
+        run: google-chrome --version
 
       # ── Dependencies ───────────────────────────────────────
       - name: Install Python dependencies
