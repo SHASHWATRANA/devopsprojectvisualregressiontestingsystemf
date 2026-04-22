@@ -52,7 +52,8 @@ jobs:
 
       # ── CLI Smoke Test ─────────────────────────────────────
       - name: Run CLI visual regression test
-        run: python src/main/cli.py --url https://example.com
+        working-directory: src/main
+        run: python cli.py --url https://example.com
 
       # ── Upload Screenshots (optional artifact) ─────────────
       - name: Upload screenshots
@@ -60,5 +61,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: src/main/screenshots/
+          path: screenshots/
           retention-days: 7
